@@ -10,19 +10,29 @@ const insertData = async (req, res) => {
         msg: `${errors.errors[0].msg}`,
       });
     }
-
+    console.log('req.data', req.body)
     let image = !req.files["image"] ? null : req.files["image"][0].filename;
     if (image) {
       req.body.image = image;
     } else {
       req.body.image = req.body.old_profile_pic;
     }
-    let bankStatement = !req.files["bankStatement"]
-      ? null
-      : req.files["bankStatement"][0].filename;
+
     let userImage = !req.files["userImage"]
       ? null
       : req.files["userImage"][0].filename;
+    if (!userImage || userImage == null || userImage == "null" || userImage == undefined || userImage == 'undefined') {
+      req.body.userImage = req.body.old_userImage;
+    } else {
+      req.body.userImage = userImage;
+    }
+
+    let BankStatement = !req.files["BankStatement"] ? null : req.files["BankStatement"][0].filename;
+    if (!BankStatement || BankStatement == null || BankStatement == "null" || BankStatement == undefined || BankStatement == 'undefined') {
+      req.body.BankStatement = req.body.old_bankStatement;
+    } else {
+      req.body.BankStatement = BankStatement;
+    }
 
     let data = {
       user_id: req.body.user_id,
@@ -33,9 +43,9 @@ const insertData = async (req, res) => {
       image: req.body.image,
       doc_no: req.body.doc_no,
       Address: req.body.Address,
-      bankStatement: bankStatement,
+      BankStatement: req.body.BankStatement,
       phoneNo: req.body.phoneNo,
-      userImage: userImage,
+      userImage: req.body.userImage,
     };
 
     const kycDetail = await kycModel.getKycDataById(req.body.user_id);
@@ -52,7 +62,7 @@ const insertData = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "something went wrong" });
+        .send({ status: false, msg: "Something went wrong" });
     }
   } catch (err) {
     console.log(err);
@@ -70,7 +80,7 @@ const getAllkyc = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "something went wrong" });
+        .send({ status: false, msg: "Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -92,7 +102,7 @@ const getKycById = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "something went wrong" });
+        .send({ status: false, msg: "Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -117,7 +127,7 @@ const UpdateSuccessKyc = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "something went wrong try again later" });
+        .send({ status: false, msg: "Something went wrong try again later" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -142,7 +152,7 @@ const rejectKyc = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "something went wrong try again later" });
+        .send({ status: false, msg: "Something went wrong try again later" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });

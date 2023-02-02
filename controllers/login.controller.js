@@ -59,21 +59,21 @@ const login = async (req, res) => {
         if (checkEmail[0].password !== hash) {
           return res
             .status(400)
-            .send({ status: false, msg: "password does not match" });
+            .send({ status: false, msg: "Password does not match" });
         }
 
         let check = await userModel.findBlock(req.body.email);
         if (Object.values(check[0]) == 1) {
           return res.status(200).send({
             status: true,
-            msg: "you cannot proceed further because you are blocked by admin",
+            msg: "You cannot proceed further because you are blocked by admin",
           });
         }
 
         // if(checkEmail[0].id == 1){
         //   return res
         //   .status(400)
-        //   .send({ status: false, msg: "we dont have user with this email" });
+        //   .send({ status: false, msg: "We dont have user with this email" });
 
         // }
 
@@ -119,7 +119,7 @@ const login = async (req, res) => {
         }
         return res.status(201).send({
           status: true,
-          msg: " login success",
+          msg: "Login successful",
           token: Token,
           data: checkEmail[0],
         });
@@ -127,7 +127,7 @@ const login = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "we dont have user with this email" });
+        .send({ status: false, msg: "We dont have user with this email" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -245,18 +245,18 @@ const forgetPassword = async (req, res) => {
       if (mailmsg) {
         return res.status(200).send({
           status: true,
-          msg: "please check your email for link to reset your password",
+          msg: "Please check your email for link to reset your password",
         });
       } else {
         return res.status(400).send({
           status: false,
-          msg: "something went wrong please try again later",
+          msg: "Something went wrong please try again later",
         });
       }
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "email is not registered" });
+        .send({ status: false, msg: "Email is not registered" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -283,7 +283,7 @@ const changePassword = async (req, res) => {
     if (checkPass[0].password !== hash1) {
       return res
         .status(400)
-        .send({ status: false, msg: " old password does not match" });
+        .send({ status: false, msg: "Old password does not match" });
     }
     const hash = CryptoJS.SHA256(req.body.password).toString(CryptoJS.enc.Hex);
 
@@ -296,7 +296,7 @@ const changePassword = async (req, res) => {
     } else {
       return res.status(400).send({
         status: false,
-        msg: "something went wrong please try again later",
+        msg: "Something went wrong please try again later",
       });
     }
     //   }
@@ -336,16 +336,16 @@ const verifyAccount = async (req, res) => {
             );
             return res
               .status(200)
-              .send({ status: true, msg: "account successfully verified" });
+              .send({ status: true, msg: "Account successfully verified" });
           } else {
-            return res.status({ status: false, msg: "something went wrong" });
+            return res.status({ status: false, msg: "Something went wrong" });
           }
         }
       );
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: " something went wrong" });
+        .send({ status: false, msg: " Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -386,7 +386,7 @@ const ResetPassword = async (req, res) => {
         } else {
           return res.status(400).send({
             status: false,
-            msg: "something went wrong please try again later",
+            msg: "Something went wrong please try again later",
           });
         }
       }

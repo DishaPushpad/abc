@@ -101,6 +101,11 @@ WHERE id = '${id}'`;
     const [result, fields] = await promisePool.query(sql);
     return result;
   };
+  getTotalAmount = async () => {
+    let sql = `SELECT SUM(balance) FROM depositFiat`;
+    const [result, fields] = await promisePool.query(sql);
+    return result;
+  };
 }
 
 module.exports = new userModel();

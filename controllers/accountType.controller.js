@@ -16,7 +16,7 @@ const createAccountType = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: true, msg: "something went wrong" });
+        .send({ status: true, msg: "Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -37,7 +37,7 @@ const deleteAccountData = async (req, res) => {
       } else {
         return res.status(400).send({
           status: false,
-          msg: " something went wrong please try again later",
+          msg: " Something went wrong please try again later",
         });
       }
     } else {
@@ -60,7 +60,7 @@ const getAllAccountDetails = async (req, res) => {
     } else {
       return res.status(400).send({
         status: false,
-        msg: " something went wrong please try again ",
+        msg: " Something went wrong please try again ",
       });
     }
   } catch (err) {

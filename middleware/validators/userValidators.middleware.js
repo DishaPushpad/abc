@@ -13,12 +13,12 @@ exports.registerUserSchema = [
     .withMessage("password is required")
     .notEmpty()
     .isLength({ min: 5 })
-    .withMessage("password must contain minimum 5 characters"),
+    .withMessage("Password must contain minimum 5 characters"),
   check("confirm_password")
     .not()
     .isEmpty()
     .custom((value, { req }) => value === req.body.password)
-    .withMessage("password and confirm password does not match"),
+    .withMessage("Password and confirm password does not match"),
 ];
 
 exports.loginUserSchema = [
@@ -56,7 +56,7 @@ exports.changePasswordSchema = [
     .not()
     .isEmpty()
     .custom((value, { req }) => value === req.body.password)
-    .withMessage("password and confirm password does not match"),
+    .withMessage("Password and confirm password does not match"),
 ];
 
 exports.resetPasswordSchema = [
@@ -73,16 +73,16 @@ exports.bankDetailsSchema = [
   check("	bank_account_holder_name")
     .not()
     .isEmpty()
-    .withMessage("bank account holder name is required")
+    .withMessage("Bank account holder name is required")
     .notEmpty()
     .isLength({ min: 5 })
     .withMessage(
-      "account holder name should be  should have minimun 5 characters"
+      "Account holder name should be  should have minimun 5 characters"
     ),
-  check("branchName").not().isEmpty().withMessage("branch name is required"),
-  check("AccountNumber").not().isEmpty().withMessage("account no is required"),
-  check("	ifsc_code").not().isEmpty().withMessage("ifsc_code no is required"),
-  check("	panCardno").not().isEmpty().withMessage("panCardno no is required"),
+  check("branchName").not().isEmpty().withMessage("Branch name is required"),
+  check("AccountNumber").not().isEmpty().withMessage("Account no is required"),
+  check("	ifsc_code").not().isEmpty().withMessage("Ifsc code no is required"),
+  check("	panCardno").not().isEmpty().withMessage("PanCardno no is required"),
 ];
 exports.withdrawSchema=[
   check("user_id")

@@ -10,7 +10,7 @@ const getAllUsers = async (req, res) => {
     } else {
       return res
         .status(200)
-        .send({ status: false, msg: "something went wrong" });
+        .send({ status: false, msg: "Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -32,7 +32,7 @@ const getUserDetailById = async (req, res) => {
       } else {
         return res
           .status(400)
-          .send({ status: false, msg: "something went wrong" });
+          .send({ status: false, msg: "Something went wrong" });
       }
     } else {
       return res
@@ -60,7 +60,7 @@ const updateUserById = async (req, res) => {
     if (updateUser) {
       return res
         .status(201)
-        .send({ status: true, msg: "user details updated successfully" });
+        .send({ status: true, msg: "User details updated successfully" });
     } else {
       return res
         .status(400)

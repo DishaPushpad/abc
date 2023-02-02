@@ -91,7 +91,8 @@ const getBankDetailsByID = async (req, res) => {
           .status(400)
           .send({ status: false, msg: "something went wrong" });
       }
-    } else {
+    }
+     else {
       return res
         .status(404)
         .send({ status: false, msg: "no details found by this user id" });
@@ -172,7 +173,7 @@ const updateDetails = async (req, res) => {
       if (update) {
         return res
           .status(201)
-          .send({ status: true, msg: " data updated successfully" });
+          .send({ status: true, msg: " Data updated successfully" });
       } else {
         return res
           .status(400)
@@ -182,7 +183,7 @@ const updateDetails = async (req, res) => {
       const insert = await bankModel.inserBankDetails(data, user_id);
       return res
         .status(201)
-        .send({ status: true, msg: " data updated successfully" });
+        .send({ status: true, msg: " Data updated successfully" });
     }
   } catch (err) {
     console.log(err);

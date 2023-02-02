@@ -17,7 +17,7 @@ const insertsupportDetails = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "something went wrong" });
+        .send({ status: false, msg: "Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -34,7 +34,7 @@ const getsupportDetails = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "something went wrong" });
+        .send({ status: false, msg: "Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });

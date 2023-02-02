@@ -18,7 +18,7 @@ const insertIdentity = async (req, res) => {
     } else {
       return res.status(400).send({
         status: false,
-        msg: "something went wrong please try again later",
+        msg: "Something went wrong please try again later",
       });
     }
   } catch (err) {
@@ -42,11 +42,11 @@ const updateIdentity = async (req, res) => {
     if (update) {
       return res
         .status(201)
-        .send({ status: true, msg: "data updated successfully" });
+        .send({ status: true, msg: "Data updated successfully" });
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "something went wrong please try later" });
+        .send({ status: false, msg: "Something went wrong please try later" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -70,7 +70,7 @@ const deleteIdentity = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "something went wrong" });
+        .send({ status: false, msg: "Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -87,7 +87,7 @@ const getAllData = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: "something went wrong" });
+        .send({ status: false, msg: "Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });

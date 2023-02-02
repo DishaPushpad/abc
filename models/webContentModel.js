@@ -29,7 +29,7 @@ class webContentModel {
     let sql = `UPDATE webContent SET 
         Aboutus='${data.Aboutus}',
         privacy_policy='${data.privacy_policy}'`;
-    
+    console.log(sql);
     const [result, fields] = await promisePool.query(sql);
     return result;
   };

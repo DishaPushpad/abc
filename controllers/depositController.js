@@ -31,7 +31,7 @@ const depositFiat = async (req, res) => {
     if (insertFiat) {
       return res
         .status(201)
-        .send({ status: true, msg: "data inserted successfully" });
+        .send({ status: true, msg: "Data inserted successfully" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, Error: err.message });
@@ -48,7 +48,7 @@ const getAllfiatDetails = async (req, res) => {
     } else {
       return res
         .status(200)
-        .send({ status: false, msg: "something went wrong" });
+        .send({ status: false, msg: "Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
@@ -105,12 +105,12 @@ const updateStatusDetails = async (req, res) => {
               } else {
                 return res
                   .status(404)
-                  .send({ status: false, msg: "something went wrong" });
+                  .send({ status: false, msg: "Something went wrong" });
               }
             } else {
               return res
                 .status(400)
-                .send({ status: false, msg: "something went wrong" });
+                .send({ status: false, msg: "Something went wrong" });
             }
           } else {
             return res.status(404).send({
@@ -128,7 +128,7 @@ const updateStatusDetails = async (req, res) => {
         } else {
           return res
             .status(400)
-            .send({ status: false, msg: "something went wrong" });
+            .send({ status: false, msg: "Something went wrong" });
         }
       } else {
         return res
@@ -144,4 +144,24 @@ const updateStatusDetails = async (req, res) => {
     return res.status(500).send({ status: false, error: err.message });
   }
 };
-module.exports = { depositFiat, getAllfiatDetails, updateStatusDetails };
+
+
+const getAllDepositTransactionsbyuser = async (req, res) => {
+  try {
+    let user_id = req.params.user_id;
+
+    const getAllList = await depositModel.getAllDepositTransactionsbyuser(user_id);
+    if (getAllList) {
+      return res.status(200).send({ status: true, data: getAllList });
+    } else {
+      return res.status(400).send({
+        status: false,
+        msg: "Something went wrong",
+      });
+    }
+  } catch (err) {
+    return res.status(500).send({ status: false, error: err.message });
+  }
+};
+
+module.exports = { depositFiat, getAllfiatDetails, updateStatusDetails ,getAllDepositTransactionsbyuser};

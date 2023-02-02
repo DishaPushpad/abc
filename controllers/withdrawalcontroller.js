@@ -32,12 +32,12 @@ const withdrawcrypto = async (req, res) => {
           if (updateStatus) {
             return res.status(201).send({
               status: true,
-              msg: "withdraw successfull and data in withdraw list inserted",
+              msg: "Withdraw successfull and data in withdraw list inserted",
             });
           } else {
             return res.status(400).send({
               status: false,
-              msg: "something went wrong",
+              msg: "Something went wrong",
             });
           }
         } else {
@@ -54,7 +54,7 @@ const withdrawcrypto = async (req, res) => {
     } else {
       return res.status(400).send({
         status: false,
-        msg: "you dont have sufficient amout to withdraw",
+        msg: "You dont have sufficient amout to withdraw",
       });
     }
   } catch (err) {
@@ -70,7 +70,7 @@ const getAllList = async (req, res) => {
     } else {
       return res.status(400).send({
         status: false,
-        msg: "something went wrong",
+        msg: "Something went wrong",
       });
     }
   } catch (err) {
@@ -89,8 +89,8 @@ const updateStatus = async (req, res) => {
     }
 
     let checkUserByid = await withdrawalModel.checkUserByid(req.body);
-
     if (checkUserByid.length > 0) {
+      console.log('checkUserByid',checkUserByid[0].id)
       const updateStatus = await withdrawalModel.updateStatus1(req.body);
 
       if (updateStatus) {
@@ -100,7 +100,7 @@ const updateStatus = async (req, res) => {
       } else {
         return res
           .status(200)
-          .send({ status: false, msg: "something went wrong" });
+          .send({ status: false, msg: "Something went wrong" });
       }
     } else {
       return res.status(404).send({
@@ -142,28 +142,28 @@ const bankWithdraw = async (req, res) => {
           if (insertWithdrawalDetails) {
             return res.status(201).send({
               status: true,
-              msg: " withdraw  successfull and data in withdraw list successfull inserted",
+              msg: "Withdraw  successfull and data in withdraw list successfull inserted",
             });
           } else {
             return res
               .status(400)
-              .send({ status: false, msg: "something went wrong" });
+              .send({ status: false, msg: "Something went wrong" });
           }
         } else {
           return res
             .status(400)
-            .send({ status: false, msg: "something went wrong" });
+            .send({ status: false, msg: "Something went wrong" });
         }
       } else {
         return res.status(400).send({
           status: false,
-          msg: "you dont have sufficient amount to withdraw",
+          msg: "You dont have sufficient amount to withdraw",
         });
       }
     } else {
       return res.status(200).send({
         status: false,
-        msg: "this coin Id is not of INR please enter walid coin id =5",
+        msg: "This coin Id is not of INR please enter walid coin id =5",
       });
     }
   } catch (err) {

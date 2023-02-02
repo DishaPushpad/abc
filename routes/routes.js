@@ -58,15 +58,22 @@ let profileUpload = upload.fields([{ name: "image", maxCount: 10 }]);
 // let profileUploadData = upload.fields([{ name: "image", maxCount: 10 }]);
 
 let bankUpload = upload.fields([
-  { name: "GSTimage", maxCount: 10 },
+  { name: "GSTImage", maxCount: 10 },
   { name: "cancelledChequeImage", maxCount: 10 },
   { name: "bankStatementImage", maxCount: 10 },
 ]);
+
+let bankUploadData = upload.fields([
+  { name: "GSTImage", maxCount: 10 },
+  { name: "cancelledChequeImage", maxCount: 20 },
+  { name: "bankStatementImage", maxCount: 30 },
+]);
+
 let insertFiat = upload.fields([{ name: "upload_file", maxCount: 10 }]);
 
 let Uploads = upload.fields([
   { name: "image", maxCount: 10 },
-  { name: "bankStatement", maxCount: 10 },
+  { name: "BankStatement", maxCount: 10 },
   { name: "userImage", maxCount: 10 }
 ]);
 
@@ -215,7 +222,7 @@ router.get(
 router.get("/getAllBankDetails", bankcontroller.getAllBankDetails.bind());
 router.put(
   "/updateBankDetails/:user_id",
-  bankUpload,
+  bankUploadData,
   bankcontroller.updateDetails.bind()
 );
 
@@ -249,6 +256,8 @@ router.put("/updatefaqDetails/:id", FAQcontroller.updatefaqDetails.bind());
 router.post("/insertDetails", webController.insertDetails.bind());
 router.delete("/deleteDetails/:id", webController.deleteDetails.bind());
 router.get("/getDetails", webController.getDetails.bind());
+router.get("/getDetails1", webController.getDetails1.bind());
+
 router.put("/updateDetails/:id", webController.updateDetails.bind());
 
 //  deposit fiat
@@ -260,6 +269,9 @@ router.put(
   "/updateStatusDetails",
   depositController.updateStatusDetails.bind()
 );
+
+router.get("/getAllDepositTransactionsbyuser/:user_id",depositController.getAllDepositTransactionsbyuser.bind())
+
 // buy and sell exchange
 router.post("/exchange", exchangeController.exchange.bind());
 
@@ -291,7 +303,10 @@ router.get(
   withdrawalcontroller.getAllDetailsOfcoin.bind()
 );
 
-router.get("/getAllTransactionDetail",transactionController.getAllTransactionDetail.bind())
+router.get("/getAllTransactionDetail/:user_id",transactionController.getAllTransactionDetail.bind())
+
+router.get("/getAllWithdrawTransactionsbyuser/:user_id",transactionController.getAllWithdrawTransactionsbyuser.bind())
+
 
 
 function ensureWebToken(req, res, next) {

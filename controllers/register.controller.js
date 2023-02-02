@@ -64,19 +64,19 @@ const registerUser = async (req, res) => {
         if (dataEnter) {
           return res.status(201).send({
             status: true,
-            msg: "email has been sent succesfully",
+            msg: "Email has been sent succesfully",
             Token: Token,
           });
         } else {
           return res
             .status(400)
-            .send({ status: false, msg: " something went wrong" });
+            .send({ status: false, msg: " Something went wrong" });
         }
       });
     } else {
       return res
         .status(400)
-        .send({ status: false, msg: " something went wrong" });
+        .send({ status: false, msg: " Something went wrong" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, error: err.message });
