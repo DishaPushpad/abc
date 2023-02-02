@@ -39,7 +39,7 @@ const insertData = async (req, res) => {
     };
 
     const kycDetail = await kycModel.getKycDataById(req.body.user_id);
-   
+
     let insert = "";
 
     if (kycDetail.length > 0) {

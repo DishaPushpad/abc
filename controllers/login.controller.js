@@ -14,6 +14,7 @@ var keySize = 256;
 var iterations = 100;
 const axios = require("axios");
 
+
 const login = async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -211,6 +212,12 @@ async function encriptedKey(pvkey, hash) {
   return (privateKey = salt.toString() + iv.toString() + encrypted.toString());
 }
 
+
+
+
+
+
+
 // forget password
 const forgetPassword = async (req, res) => {
   try {
@@ -255,6 +262,10 @@ const forgetPassword = async (req, res) => {
     return res.status(500).send({ status: false, error: err.message });
   }
 };
+
+
+
+
 
 const changePassword = async (req, res) => {
   try {
