@@ -1,7 +1,7 @@
 module.exports = { 
     mysqlHost: "13.233.12.75",
-      user: "esp",
-      password: 'Espsoft123#',
+      user: "***",
+      password: '*#',
       database: "crypto-wallet",
       mysqlPort: 3306,
       JWT_SECRET_KEY: 'ly27lg35kci85tvgvl0zgbod4',
